@@ -637,7 +637,8 @@ public class RtmpConnection implements RtmpPublisher {
             objData = ((AmfObject) objData.getProperty("data"));
             serverIpAddr = (AmfString) objData.getProperty("srs_server_ip");
             serverPid = (AmfNumber) objData.getProperty("srs_pid");
-            serverId = (AmfString) objData.getProperty("srs_id");
+            serverId
+                    = new AmfString(((AmfNumber) objData.getProperty("srs_id")).getValue()+"");
         }
         String info = "";
         info += serverIpAddr == null ? "" : " ip: " + serverIpAddr.getValue();
